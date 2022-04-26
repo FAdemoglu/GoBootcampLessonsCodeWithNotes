@@ -5,6 +5,9 @@ import (
 	"sync"
 )
 
+//Sync once sadece bir defa çalıştırmak istediğiniz fonksiyonlar için kullanılabilen bir methoddur concurrent safedir
+
+//Sync once nerelerde kullanılabilir sadece bir struct yaratılıcaksa, bir işlem yapılacak ve sadece bir kere yapılacaksa
 func main() {
 	//SyncOnce()
 	//SyncOnceDeadlock()
@@ -42,6 +45,8 @@ func SyncOnceWithMultipleFunction() {
 	var once sync.Once
 	once.Do(increment)
 	once.Do(decrement)
+	//Burada count değeri 1 olur sebebi ise once.Do sadece bir kere çalışır yani burada increment i çalıştırır
+	//ve sonuç sadece 1 olur
 
 	fmt.Printf("Count: %d\n", count)
 }
